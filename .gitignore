@@ -7,3 +7,9 @@ venv
 logs.txt
 message.txt
 .env
+.elasticbeanstalk/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
