@@ -1,0 +1,9 @@
+**/.ipynb_checkpoints
+.ipynb_checkpoints/*
+.ipynb_checkpoints
+insults.csv
+venv
+*.pyc
+logs.txt
+message.txt
+.env
