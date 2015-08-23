@@ -78,7 +78,7 @@ print 'All loaded Captn\'!'
 # Setting up our base route
 @app.route('/')
 def display_form():
-    return render_template('hater-form.html')
+    return render_template('layout.html')
 
 
 # Setting up a way to get our form data
