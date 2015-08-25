@@ -84,7 +84,7 @@ def display_form():
 # Setting up a way to get our form data
 @app.route('/score-comment', methods=['GET'])
 def predict_hate():
-    comment = request.args.get('comment')
+    comment = request.args.get('comment').encode('utf-8')
     print 'this was the comment', comment
     score = user_score([comment], vect, clf)
     return jsonify({'score': score[0][1]})
