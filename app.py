@@ -80,14 +80,24 @@ print 'All loaded Captn\'!'
 def display_form():
     return render_template('layout.html')
 
-
-# Setting up a way to get our form data
+# Score an individual comment
 @app.route('/score-comment', methods=['GET'])
-def predict_hate():
+def score_comment():
     comment = request.args.get('comment').encode('utf-8')
     print 'this was the comment', comment
     score = user_score([comment], vect, clf)
     return jsonify({'score': score[0][1]})
+
+# score a group of comments
+@app.route('/score-comments', methods=['GET'])
+def score_comments():
+    comments = request.args.get('comments').split(',')
+    comments = list(map((lambda comment: smart_str(comment)), comments))
+    print 'this was the json', comments
+    score = user_score(comments, vect, clf)
+    print 'SCORE:', score
+    mapped_score = list(map((lambda x: x[1]), score))
+    return jsonify({'scores': mapped_score})
 
 if __name__ == '__main__':
     app.debug = True
